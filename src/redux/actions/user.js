@@ -1,12 +1,8 @@
 import Axios from 'axios'
 import { API_URL } from '../../constants/API'
-import Cookie from 'universal-cookie'
 import userTypes from '../types/user'
 
 const {ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT, ON_REGISTER_SUCCESS, ON_REGISTER_FAIL} = userTypes
-
-const cookieObj = new Cookie()
-
 
 export const LoginHandler = (userData) => {
     return (dispatch) => {
@@ -40,20 +36,19 @@ export const LoginHandler = (userData) => {
 
 export const RegisterHandler = (userData) => {
     return (dispatch) => {
-        const { username, fullName, password, role, address } = userData;
+        const { username, fullName, password, address } = userData;
         Axios.get(`${API_URL}/users`, {
             params: {
                 username: `${username}`
             }
         })
             .then((res) => {
-                if (username && fullName && password && role && address != "") {
+                if (username && fullName && password && address != "") {
                     if (res.data.length == 0) {
                         Axios.post(`${API_URL}/users`, {
                             username: `${username}`,
                             fullName: `${fullName}`,
                             password: `${password}`,
-                            role: `${role}`,
                             address: `${address}`,
                         })
                             .then((res) => {

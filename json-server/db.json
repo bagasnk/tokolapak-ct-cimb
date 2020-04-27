@@ -1,3 +1,32 @@
 {
-    "users" : []
+  "users": [
+    {
+      "username": "bagas",
+      "fullName": "Bagas Yafitra Pandji",
+      "password": "123",
+      "address": "Jl.Puri Asih 1 No 10",
+      "id": 1
+    },
+    {
+      "username": "kopong",
+      "fullName": "asd",
+      "password": "asd",
+      "address": "asd",
+      "id": 2
+    },
+    {
+      "username": "Ilham",
+      "fullName": "asd",
+      "password": "asd",
+      "address": "asd",
+      "id": 3
+    },
+    {
+      "username": "theo",
+      "fullName": "asd",
+      "password": "asd",
+      "address": "asd",
+      "id": 4
+    }
+  ]
 }
