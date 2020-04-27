@@ -27,6 +27,20 @@
       "password": "asd",
       "address": "asd",
       "id": 4
+    },
+    {
+      "username": "bela",
+      "fullName": "asd",
+      "password": "asd",
+      "address": "asd",
+      "id": 5
+    },
+    {
+      "username": "asd",
+      "fullName": "asd",
+      "password": "asd",
+      "address": "asd",
+      "id": 6
     }
   ]
 }

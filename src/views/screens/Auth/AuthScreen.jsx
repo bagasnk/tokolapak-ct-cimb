@@ -3,7 +3,10 @@ import TextField from "../../components/TextField/TextField"
 import ButtonUI from "../../components/Button/Button"
 import { RegisterHandler, LoginHandler } from '../../../redux/actions'
 import { connect } from 'react-redux'
+import Cookie from 'universal-cookie'
 
+
+const cookiesObject = new Cookie();
 class AuthScreen extends React.Component {
     state = {
         username: "",
@@ -12,6 +15,7 @@ class AuthScreen extends React.Component {
         address: "",
         users: [],
         kondisi: true,
+        isLoading: false,
     }
     conditionFormLogin = () => {
         this.setState({ kondisi: true });
@@ -34,6 +38,7 @@ class AuthScreen extends React.Component {
         this.props.onLogin(userData)
         this.setState({ username: "" })
         this.setState({ password: "" })
+        this.setState({ errMsg: "" })
     }
 
     postDataHandler = () => {
@@ -45,7 +50,19 @@ class AuthScreen extends React.Component {
             address,
         };
         this.props.onRegister(userData)
+        this.setState({ username: "" })
+        this.setState({ password: "" })
+        this.setState({ fullName: "" })
+        this.setState({ address: "" })
+        this.setState({ errMsg: "" })
+        
     }
+
+    componentDidUpdate(){
+        if(this.props.user.id){
+          cookiesObject.set("authData", JSON.stringify(this.props.user))
+        }
+      }
 
     render() {
 

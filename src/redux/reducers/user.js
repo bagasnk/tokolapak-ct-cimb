@@ -20,6 +20,7 @@ export default (state = init_state, action) => {
         fullName,
         address,
         id,
+        errMsg: "",
       };
     case ON_LOGIN_FAIL:
       return { ...state, errMsg: action.payload }
@@ -31,14 +32,22 @@ export default (state = init_state, action) => {
         fullName,
         address,
         password,
-        id
+        id,
+        errMsg: "",
       };
       return {}
     case ON_REGISTER_FAIL:
-
       return { ...state, errMsg: action.payload }
     case ON_LOGOUT:
-      return { ...init_state }
+      return {
+        ...state,
+        username: action.payload,
+        fullName: action.payload,
+        role: action.payload,
+        password: action.payload,
+        id: action.payload,
+        errMsg: "Berhasil Logout"
+      }
     default:
       return { ...state }
   }
