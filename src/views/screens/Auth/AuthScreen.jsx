@@ -16,9 +16,8 @@ class AuthScreen extends React.Component {
                         </p>
                             <TextField placeholder='Username' className="mt-5" />
                             <TextField placeholder='Password' className="mt-2" />
-                            <div className="d-flex">
+                            <div className="d-flex justify-content-center">
                                 <ButtonUI type="contained" className="mt-4">Login</ButtonUI>
-
                             </div>
 
                         </div>
