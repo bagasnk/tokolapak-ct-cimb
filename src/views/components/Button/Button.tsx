@@ -10,14 +10,16 @@ type ButtonTypes = {
 };
 
 const ButtonUI = (props: ButtonTypes) => {
-  let { type, children, style, className, onClick} = props;
+  let { type, children, style, className, onClick } = props;
 
   type = type || "contained";
 
   return (
-    <div style={style} 
-    className={`custom-btn custom-btn-${type} ${className}`}
-    onClick={onClick}>
+    <div
+      style={style}
+      onClick={onClick}
+      className={`custom-btn custom-btn-${type} ${className}`}
+    >
       {children}
     </div>
   );
