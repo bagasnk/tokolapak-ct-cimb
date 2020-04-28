@@ -4,43 +4,55 @@
       "username": "bagas",
       "fullName": "Bagas Yafitra Pandji",
       "password": "123",
-      "address": "Jl.Puri Asih 1 No 10",
+      "email": "bagasyafitrapandji.nk@gmail.com",
       "id": 1
     },
     {
       "username": "kopong",
       "fullName": "asd",
       "password": "asd",
-      "address": "asd",
+      "email": "asd",
       "id": 2
     },
     {
       "username": "Ilham",
       "fullName": "asd",
       "password": "asd",
-      "address": "asd",
+      "email": "asd",
       "id": 3
     },
     {
       "username": "theo",
       "fullName": "asd",
       "password": "asd",
-      "address": "asd",
+      "email": "asd",
       "id": 4
+    }
+  ],
+  "products": [
+    {
+      "productName": "iPhone 7 Plus",
+      "price": 5000000,
+      "category": "Phone",
+      "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
+      "desc": "HP Terbaikk loh",
+      "id": 1
     },
     {
-      "username": "bela",
-      "fullName": "asd",
-      "password": "asd",
-      "address": "asd",
-      "id": 5
+      "productName": "iPad Pro 3",
+      "price": 15000000,
+      "category": "Tablet",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
+      "desc": "iPad Terbaikk loh",
+      "id": 2
     },
     {
-      "username": "asd",
-      "fullName": "asd",
-      "password": "asd",
-      "address": "asd",
-      "id": 6
+      "productName": "Macbook Pro",
+      "price": 20000000,
+      "category": "Laptop",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/m/b/mbp15touch-silver-select-cto-201807_3_1.jpeg",
+      "desc": "laptop Terbaikk loh",
+      "id": 3
     }
   ]
 }

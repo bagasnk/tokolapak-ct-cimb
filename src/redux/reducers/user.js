@@ -5,32 +5,30 @@ const init_state = {
   id: 0,
   username: "",
   fullName: "",
-  address: "",
+  email: "",
   errMsg: "",
 };
 
 export default (state = init_state, action) => {
   switch (action.type) {
     case ON_LOGIN_SUCCESS:
-      alert("BERHASIL LOGIN")
-      const { username, fullName, address, id, password } = action.payload;
+      const { username, fullName, email, id, password } = action.payload;
       return {
         ...state,
         username,
         fullName,
-        address,
+        email,
         id,
         errMsg: "",
       };
     case ON_LOGIN_FAIL:
       return { ...state, errMsg: action.payload }
     case ON_REGISTER_SUCCESS:
-      alert("Berhasil Register")
       return {
         ...state,
         username,
         fullName,
-        address,
+        email,
         password,
         id,
         errMsg: "",

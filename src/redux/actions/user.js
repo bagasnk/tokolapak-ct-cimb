@@ -36,20 +36,20 @@ export const LoginHandler = (userData) => {
 
 export const RegisterHandler = (userData) => {
     return (dispatch) => {
-        const { username, fullName, password, address } = userData;
+        const { username, fullName, password, email } = userData;
         Axios.get(`${API_URL}/users`, {
             params: {
                 username: `${username}`
             }
         })
             .then((res) => {
-                if (username && fullName && password && address != "") {
+                if (username && fullName && password && email != "") {
                     if (res.data.length == 0) {
                         Axios.post(`${API_URL}/users`, {
                             username: `${username}`,
                             fullName: `${fullName}`,
                             password: `${password}`,
-                            address: `${address}`,
+                            email: `${email}`,
                         })
                             .then((res) => {
                                 dispatch({
