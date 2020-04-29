@@ -21,8 +21,9 @@ class App extends React.Component {
     console.log(cookiesResult)
     if (cookiesResult) {
       this.props.userKeepLogin(cookiesResult)
-    }
+    } else {
     this.props.cookieChecker();
+    }
   }
   render() {
     if (this.props.user.cookieChecked) {
@@ -32,7 +33,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/auth" component={AuthScreen} />
-            <Route exact path="/product/:productId" component={ProductDetails} />
+            <Route exact path="/products/:productId" component={ProductDetails} />
             <Route exact path="/cart" component={Cart} />
           </Switch>
           <div style={{ height: "120px" }} />

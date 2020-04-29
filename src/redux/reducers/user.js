@@ -36,7 +36,6 @@ export default (state = init_state, action) => {
         cookieChecked: true,
         errMsg: "",
       };
-      return {}
     case ON_REGISTER_FAIL:
       return { ...state, errMsg: action.payload, cookieChecked: true }
     case ON_LOGOUT:
@@ -51,7 +50,7 @@ export default (state = init_state, action) => {
         errMsg: "Berhasil Logout"
       };
     case "COOKIE_CHECK":
-      return { ...init_state, cookieChecked: true };
+      return { ...state, cookieChecked: true };
     default:
       return { ...state }
   }
