@@ -61,19 +61,17 @@ class Navbar extends React.Component {
           <>
           <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
           <p className="small ml-3 mr-4">{this.props.user.username}</p>
+          <Link style={{textDecoration:"none", color:"inherit"}} to="/cart">
           <FontAwesomeIcon
             className="mr-2"
             icon={faShoppingCart}
             style={{ fontSize: 24 }}
-          />
+          /></Link>
           <CircleBg>
             <small style={{ color: "#3C64B1", fontWeight: "bold" }}>4</small>
           </CircleBg>
-          {/* <ButtonUI 
-          type="contained" 
-          value="Logout" 
-          onClick={this.LogoutDataHandler}>Log Out</ButtonUI> */}
-          <ButtonUI type="contained" value="Logout"  onClick={this.LogoutDataHandler}>
+
+          <ButtonUI className="ml-5" type="contained" value="Logout"  onClick={this.LogoutDataHandler}>
           <Link style={{textDecoration:"none", color:"inherit"}} to="/auth">Logout</Link>
           </ButtonUI>
           </>

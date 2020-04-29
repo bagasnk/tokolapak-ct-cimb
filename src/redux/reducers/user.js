@@ -43,7 +43,7 @@ export default (state = init_state, action) => {
         ...state,
         username: action.payload,
         fullName: action.payload,
-        role: action.payload,
+        email: action.payload,
         password: action.payload,
         id: action.payload,
         cookieChecked: true,
