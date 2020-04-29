@@ -54,5 +54,43 @@
       "desc": "laptop Terbaikk loh",
       "id": 3
     }
+  ],
+  "cart": [
+    {
+      "userId": 1,
+      "productId": 2,
+      "quantity": 1,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "productsId": 2,
+      "quantity": 1,
+      "id": 2
+    },
+    {
+      "userId": 0,
+      "productId": 1,
+      "quantity": 1,
+      "id": 3
+    },
+    {
+      "userId": 0,
+      "productId": 1,
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "userId": 0,
+      "productId": 1,
+      "quantity": 1,
+      "id": 5
+    },
+    {
+      "userId": 0,
+      "productId": 2,
+      "quantity": 1,
+      "id": 6
+    }
   ]
 }

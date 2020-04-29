@@ -56,8 +56,10 @@ class Navbar extends React.Component {
           />
         </div>
         <div className="d-flex flex-row align-items-center">
-          {/* <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
-          <p className="small ml-3 mr-4">Profile</p>
+        {this.props.user.id ? (
+          <>
+          <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
+          <p className="small ml-3 mr-4">{this.props.user.username}</p>
           <FontAwesomeIcon
             className="mr-2"
             icon={faShoppingCart}
@@ -65,15 +67,33 @@ class Navbar extends React.Component {
           />
           <CircleBg>
             <small style={{ color: "#3C64B1", fontWeight: "bold" }}>4</small>
-          </CircleBg> */}
-          <ButtonUI className="mr-3" type="textual">Sign in</ButtonUI>
-          <ButtonUI type="contained">Sign up</ButtonUI>
-          
-          
-          {this.props.user.id ? <ButtonUI 
+          </CircleBg>
+          {/* <ButtonUI 
           type="contained" 
           value="Logout" 
-          onClick={this.LogoutDataHandler}>Log Out</ButtonUI> : null }
+          onClick={this.LogoutDataHandler}>Log Out</ButtonUI> */}
+          <ButtonUI type="contained" value="Logout"  onClick={this.LogoutDataHandler}>
+          <Link style={{textDecoration:"none", color:"inherit"}} to="/auth">Logout</Link>
+          </ButtonUI>
+          </>
+        ):(
+          <>
+           <ButtonUI className="mr-3" type="textual">
+          <Link style={{textDecoration:"none", color:"inherit"}} to="/auth">Sign In</Link>
+          </ButtonUI>
+          
+          <ButtonUI type="contained">
+          <Link style={{textDecoration:"none", color:"inherit"}} to="/auth">Sign Up</Link>
+          </ButtonUI>
+          </>
+        )}
+           
+          
+
+          {/* {this.props.user.id ? <ButtonUI 
+          type="contained" 
+          value="Logout" 
+          onClick={this.LogoutDataHandler}>Log Out</ButtonUI> : null } */}
           
         </div>
       </div>

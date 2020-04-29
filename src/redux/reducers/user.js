@@ -7,6 +7,7 @@ const init_state = {
   fullName: "",
   email: "",
   errMsg: "",
+  cookieChecked:false,
 };
 
 export default (state = init_state, action) => {
@@ -19,10 +20,11 @@ export default (state = init_state, action) => {
         fullName,
         email,
         id,
+        cookieChecked:true,
         errMsg: "",
       };
     case ON_LOGIN_FAIL:
-      return { ...state, errMsg: action.payload }
+      return { ...state, errMsg: action.payload , cookieChecked:true }
     case ON_REGISTER_SUCCESS:
       return {
         ...state,
@@ -31,11 +33,12 @@ export default (state = init_state, action) => {
         email,
         password,
         id,
+        cookieChecked:true,
         errMsg: "",
       };
       return {}
     case ON_REGISTER_FAIL:
-      return { ...state, errMsg: action.payload }
+      return { ...state, errMsg: action.payload,cookieChecked:true }
     case ON_LOGOUT:
       return {
         ...state,
@@ -44,9 +47,10 @@ export default (state = init_state, action) => {
         role: action.payload,
         password: action.payload,
         id: action.payload,
+        cookieChecked:true,
         errMsg: "Berhasil Logout"
       }
     default:
-      return { ...state }
+      return { ...state}
   }
 };

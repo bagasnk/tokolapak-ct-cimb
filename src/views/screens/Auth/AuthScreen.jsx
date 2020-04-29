@@ -83,9 +83,9 @@ class AuthScreen extends React.Component {
     checkboxHandler = (e, form) => {
         // const target = e.target
         // const value = target.value
-        const {checked} = e.target
+        const { checked } = e.target
         this.setState({
-            [form]:{
+            [form]: {
                 ...this.state[form],
                 showPassword: checked,
             }
@@ -126,7 +126,7 @@ class AuthScreen extends React.Component {
                         className="mt-2"
                         type={this.state.registerForm.showPassword ? "text" : "password"}
                     />
-                    <input type="checkbox" onChange={(e) => this.checkboxHandler(e,'registerForm')} className="mt-3" name="showPasswordRegister" />{" "} 
+                    <input type="checkbox" onChange={(e) => this.checkboxHandler(e, 'registerForm')} className="mt-3" name="showPasswordRegister" />{" "}
                     Show Password
                     <div className="d-flex justify-content-center">
                         <ButtonUI
@@ -160,7 +160,7 @@ class AuthScreen extends React.Component {
                         className="mt-2"
                         type={this.state.loginForm.showPassword ? "text" : "password"}
                     />
-                    <input type="checkbox" onChange={(e) => this.checkboxHandler(e,'loginForm')} className="mt-3" name="showPasswordLogin" />{" "} 
+                    <input type="checkbox" onChange={(e) => this.checkboxHandler(e, 'loginForm')} className="mt-3" name="showPasswordLogin" />{" "}
                     Show Password
                     <div className="d-flex justify-content-center">
                         <ButtonUI
