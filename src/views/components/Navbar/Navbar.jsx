@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons/";
 
@@ -6,8 +9,6 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 import "./Navbar.css";
 import ButtonUI from "../Button/Button.tsx";
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { LogoutHandler } from '../../../redux/actions'
 import Cookie from 'universal-cookie'
 const cookiesObject = new Cookie();

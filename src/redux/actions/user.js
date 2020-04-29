@@ -1,8 +1,11 @@
 import Axios from 'axios'
 import { API_URL } from '../../constants/API'
 import userTypes from '../types/user'
+import Cookie from "universal-cookie";
 
 const {ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT, ON_REGISTER_SUCCESS, ON_REGISTER_FAIL} = userTypes
+
+const cookieObj = new Cookie();
 
 export const LoginHandler = (userData) => {
     return (dispatch) => {
@@ -114,3 +117,9 @@ export const LogoutHandler = () => {
         payload : "",
     }
 }
+
+export const cookieChecker = () => {
+    return {
+      type: "COOKIE_CHECK",
+    };
+  };

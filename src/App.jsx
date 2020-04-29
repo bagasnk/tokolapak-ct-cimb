@@ -10,7 +10,7 @@ import Navbar from "./views/components/Navbar/Navbar";
 import AuthScreen from "./views/screens/Auth/AuthScreen";
 import ProductDetails from "./views/screens/ProductDetails/ProductDetails";
 import Cart from "./views/screens/Cart/Cart"
-import { userKeepLogin } from './redux/actions';
+import { userKeepLogin,cookieChecker } from './redux/actions';
 
 
 const cookiesObject = new Cookie();
@@ -22,6 +22,7 @@ class App extends React.Component {
     if (cookiesResult) {
       this.props.userKeepLogin(cookiesResult)
     }
+    this.props.cookieChecker();
   }
   render() {
     if (this.props.user.cookieChecked) {
@@ -50,7 +51,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  userKeepLogin
+  userKeepLogin,
+  cookieChecker,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
