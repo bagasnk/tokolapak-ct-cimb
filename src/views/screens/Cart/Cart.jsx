@@ -11,8 +11,7 @@ import { Link } from "react-router-dom";
 
  class Cart extends React.Component {
     state = {
-        itemCart: []
-
+        itemCart: [],
     }
 
     componentDidMount() {
@@ -57,6 +56,7 @@ import { Link } from "react-router-dom";
                         <th scope="row">{idx + 1}</th>
                         <td>{val.product.productName}</td>
                         <td>{val.product.price}</td>
+                        <td>{val.quantity}</td>
                         <td>{val.product.category}</td>
                         <td><img src={val.product.image} alt="" style={{ height: "50px" }} /></td>
                         <td><ButtonUI
@@ -81,6 +81,7 @@ import { Link } from "react-router-dom";
                             <th>No.</th>
                             <th>Product Name</th>
                             <th>Price</th>
+                            <th>Quantity</th>
                             <th>Category</th>
                             <th>Image</th>
                         </tr>

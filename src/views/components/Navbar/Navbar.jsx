@@ -33,8 +33,6 @@ class Navbar extends React.Component {
 
   LogoutDataHandler = () => {
     this.props.onLogout()
-
-
   }
 
   render() {

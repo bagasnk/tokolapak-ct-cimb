@@ -112,18 +112,35 @@ class Home extends React.Component {
   };
 
   getBestSellerData = () => {
-    Axios.get(`${API_URL}/products`)
-      .then((res) => {
-        this.setState({ bestSellerData: res.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+      Axios.get(`${API_URL}/products`)
+        .then((res) => {
+          this.setState({ bestSellerData: res.data });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
 
-  renderProducts=()=>{
-    return this.state.bestSellerData.map(val=>{
-      return <ProductCard data={val} key={`bestseller-${val.id}`} className='m-3'/>
+
+  getFilterData = (val) => {
+      Axios.get(`${API_URL}/products`, {
+        params: {
+          category: val,
+        }
+      })
+        .then((res) => {
+          console.log(res);
+          this.setState({ bestSellerData: res.data })
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  
+
+  renderProducts = () => {
+    return this.state.bestSellerData.map(val => {
+      return <ProductCard data={val} key={`bestseller-${val.id}`} className='m-3' />
     })
   }
 
@@ -135,16 +152,16 @@ class Home extends React.Component {
     return (
       <div>
         <div className="d-flex justify-content-center flex-row align-items-center my-3">
-          <Link to="/" style={{ color: "inherit" }}>
+          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Phone")}>
             <h6 className="mx-4 font-weight-bold">PHONE</h6>
           </Link>
-          <Link to="/" style={{ color: "inherit" }}>
+          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Laptop")}>
             <h6 className="mx-4 font-weight-bold">LAPTOP</h6>
           </Link>
-          <Link to="/" style={{ color: "inherit" }}>
+          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Tab")}>
             <h6 className="mx-4 font-weight-bold">TAB</h6>
           </Link>
-          <Link to="/" style={{ color: "inherit" }}>
+          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Desktop")}>
             <h6 className="mx-4 font-weight-bold">DESKTOP</h6>
           </Link>
         </div>
