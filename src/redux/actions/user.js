@@ -3,7 +3,7 @@ import { API_URL } from '../../constants/API'
 import userTypes from '../types/user'
 import Cookie from "universal-cookie";
 
-const {ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT, ON_REGISTER_SUCCESS, ON_REGISTER_FAIL} = userTypes
+const { ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT, ON_REGISTER_SUCCESS, ON_REGISTER_FAIL, COOKIE_CHECK, ON_SEARCHFILTER_SUCCESS } = userTypes
 
 const cookieObj = new Cookie();
 
@@ -47,9 +47,10 @@ export const RegisterHandler = (userData) => {
         })
             .then((res) => {
                 if (username && fullName && password && email != "") {
-                    
+
                     if (res.data.length == 0) {
-                        Axios.post(`${API_URL}/users`,{ ...userData, role:"user"
+                        Axios.post(`${API_URL}/users`, {
+                            ...userData, role: "user"
                             // username: `${username}`,
                             // fullName: `${fullName}`,
                             // password: `${password}`,
@@ -112,16 +113,23 @@ export const userKeepLogin = (userData) => {
     }
 }
 
-export const LogoutHandler = () => {
-    cookieObj.remove("authData" , {path:"/"})
+export const logoutHandler = () => {
+    cookieObj.remove("authData", { path: "/" })
     return {
-        type : ON_LOGOUT,
-        payload : "",
+        type: ON_LOGOUT,
+        payload: "",
     }
 }
 
 export const cookieChecker = () => {
     return {
-      type: "COOKIE_CHECK",
-    };
-  };
+        type: COOKIE_CHECK,
+    }
+}
+
+export const SearchAndFilterHandler = (text) => {
+    return {
+        type: "ON_SEARCHFILTER_SUCCESS",
+        payload: text,
+    }
+}

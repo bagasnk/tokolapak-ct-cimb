@@ -19,6 +19,7 @@ import ButtonUI from "../../components/Button/Button";
 import CarouselShowcaseItem from "./CarouselShowcaseItem.tsx";
 import Colors from "../../../constants/Colors";
 import { API_URL } from "../../../constants/API";
+import { connect } from "react-redux"
 
 const dummy = [
   {
@@ -111,36 +112,27 @@ class Home extends React.Component {
     this.setState({ activeIndex: prevIndex });
   };
 
-  getBestSellerData = () => {
-      Axios.get(`${API_URL}/products`)
-        .then((res) => {
-          this.setState({ bestSellerData: res.data });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  getBestSellerData = (val) => {
+    Axios.get(`${API_URL}/products`, {
+      params: {
+        category: val,
       }
-
-
-  getFilterData = (val) => {
-      Axios.get(`${API_URL}/products`, {
-        params: {
-          category: val,
-        }
+    })
+      .then((res) => {
+        this.setState({ bestSellerData: res.data });
       })
-        .then((res) => {
-          console.log(res);
-          this.setState({ bestSellerData: res.data })
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    }
-  
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
 
   renderProducts = () => {
     return this.state.bestSellerData.map(val => {
-      return <ProductCard data={val} key={`bestseller-${val.id}`} className='m-3' />
+      const { productName } = val
+      if (productName.toLowerCase().startsWith(this.props.user.searchAndFilter.toLowerCase()))
+        return <ProductCard data={val} key={`bestseller-${val.id}`} className='m-3' />
     })
   }
 
@@ -152,16 +144,16 @@ class Home extends React.Component {
     return (
       <div>
         <div className="d-flex justify-content-center flex-row align-items-center my-3">
-          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Phone")}>
+          <Link to="/" style={{ color: "inherit" }} onClick={() => this.getBestSellerData("Phone")}>
             <h6 className="mx-4 font-weight-bold">PHONE</h6>
           </Link>
-          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Laptop")}>
+          <Link to="/" style={{ color: "inherit" }} onClick={() => this.getBestSellerData("Laptop")}>
             <h6 className="mx-4 font-weight-bold">LAPTOP</h6>
           </Link>
-          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Tab")}>
+          <Link to="/" style={{ color: "inherit" }} onClick={() => this.getBestSellerData("Tab")}>
             <h6 className="mx-4 font-weight-bold">TAB</h6>
           </Link>
-          <Link to="/" style={{ color: "inherit" }} onClick={()=>this.getFilterData("Desktop")}>
+          <Link to="/" style={{ color: "inherit" }} onClick={() => this.getBestSellerData("Desktop")}>
             <h6 className="mx-4 font-weight-bold">DESKTOP</h6>
           </Link>
         </div>
@@ -185,7 +177,7 @@ class Home extends React.Component {
         </Carousel>
         <div className="container">
           {/* BEST SELLER SECTION */}
-          <h2 className="text-center font-weight-bolder mt-5">BEST SELLER</h2>
+          <h2 className="text-center font-weight-bolder mt-5">BEST SELLER </h2>
           <div className="row d-flex flex-wrap justify-content-center">
             {this.renderProducts()}
           </div>
@@ -243,5 +235,10 @@ class Home extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
-export default Home;
+export default connect(mapStateToProps)(Home);

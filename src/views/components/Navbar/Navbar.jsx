@@ -4,14 +4,18 @@ import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons/";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+} from "reactstrap";
 
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 import "./Navbar.css";
-import ButtonUI from "../Button/Button.tsx";
-import { LogoutHandler } from '../../../redux/actions'
-import Cookie from 'universal-cookie'
-const cookiesObject = new Cookie();
+import ButtonUI from "../Button/Button";
+import { logoutHandler,SearchAndFilterHandler } from "../../../redux/actions";
 
 const CircleBg = ({ children }) => {
   return <div className="circle-bg">{children}</div>;
@@ -20,7 +24,8 @@ const CircleBg = ({ children }) => {
 class Navbar extends React.Component {
   state = {
     searchBarIsFocused: false,
-    searcBarInput: "",
+    searchBarInput: "",
+    dropdownOpen: false,
   };
 
   onFocus = () => {
@@ -31,9 +36,14 @@ class Navbar extends React.Component {
     this.setState({ searchBarIsFocused: false });
   };
 
-  LogoutDataHandler = () => {
-    this.props.onLogout()
-  }
+  logoutBtnHandler = () => {
+    this.props.onLogout();
+    // this.forceUpdate();
+  };
+
+  toggleDropdown = () => {
+    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+  };
 
   render() {
     return (
@@ -43,13 +53,17 @@ class Navbar extends React.Component {
             LOGO
           </Link>
         </div>
-        <div style={{ flex: 1 }} className="px-5">
+        <div
+          style={{ flex: 1 }}
+          className="px-5 d-flex flex-row justify-content-start"
+        >
           <input
             onFocus={this.onFocus}
             onBlur={this.onBlur}
+            onChange={(e)=>this.props.onSearchFilter(e.target.value)}
             className={`search-bar ${
               this.state.searchBarIsFocused ? "active" : null
-              }`}
+            }`}
             type="text"
             placeholder="Cari produk impianmu disini"
           />
@@ -57,58 +71,90 @@ class Navbar extends React.Component {
         <div className="d-flex flex-row align-items-center">
           {this.props.user.id ? (
             <>
-              <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
-              <p className="small ml-3 mr-4">{this.props.user.username}</p>
-              <Link style={{ textDecoration: "none", color: "inherit" }} to="/cart">
+              <Dropdown
+                toggle={this.toggleDropdown}
+                isOpen={this.state.dropdownOpen}
+              >
+                <DropdownToggle tag="div" className="d-flex">
+                  <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
+                  <p className="small ml-3 mr-4">{this.props.user.username}</p>
+                </DropdownToggle>
+                <DropdownMenu className="mt-2">
+                  <DropdownItem>
+                    <Link
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      to="/admin/dashboard"
+                    >
+                      Dashboard
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>Members</DropdownItem>
+                  <DropdownItem>Payments</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+              <Link
+                className="d-flex flex-row"
+                to="/cart"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <FontAwesomeIcon
                   className="mr-2"
                   icon={faShoppingCart}
                   style={{ fontSize: 24 }}
-                /></Link>
-              <CircleBg>
-                <small style={{ color: "#3C64B1", fontWeight: "bold" }}>4</small>
-              </CircleBg>
-
-
-              <Link style={{ textDecoration: "none", color: "inherit" }} to="/auth">
-                <ButtonUI className="ml-5" type="contained" value="Logout" onClick={this.LogoutDataHandler}>Logout</ButtonUI>
+                />
+                <CircleBg>
+                  <small style={{ color: "#3C64B1", fontWeight: "bold" }}>
+                    4
+                  </small>
+                </CircleBg>
               </Link>
-
+              <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/"
+                >
+                  <ButtonUI
+                onClick={this.logoutBtnHandler}
+                className="ml-3"
+                type="textual"
+              >
+                Logout
+              </ButtonUI>
+                </Link>
+              
             </>
           ) : (
-              <>
-                <ButtonUI className="mr-3" type="textual">
-                  <Link style={{ textDecoration: "none", color: "inherit" }} to="/auth">Sign In</Link>
-                </ButtonUI>
-
-                <ButtonUI type="contained">
-                  <Link style={{ textDecoration: "none", color: "inherit" }} to="/auth">Sign Up</Link>
-                </ButtonUI>
-              </>
-            )}
-
-
-
-          {/* {this.props.user.id ? <ButtonUI 
-          type="contained" 
-          value="Logout" 
-          onClick={this.LogoutDataHandler}>Log Out</ButtonUI> : null } */}
-
+            <>
+              <ButtonUI className="mr-3" type="textual">
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/auth"
+                >
+                  Sign in
+                </Link>
+              </ButtonUI>
+              <ButtonUI type="contained">
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/auth"
+                >
+                  Sign up
+                </Link>
+              </ButtonUI>
+            </>
+          )}
         </div>
       </div>
     );
   }
 }
-
-const mapStatetoProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.user
-  }
-}
-
+    user: state.user,
+  };
+};
 const mapDispatchToProps = {
-  onLogout: LogoutHandler,
+  onLogout: logoutHandler,
+  onSearchFilter: SearchAndFilterHandler,
+};
 
-}
-
-export default connect(mapStatetoProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
