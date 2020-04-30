@@ -47,12 +47,13 @@ export const RegisterHandler = (userData) => {
         })
             .then((res) => {
                 if (username && fullName && password && email != "") {
+                    
                     if (res.data.length == 0) {
-                        Axios.post(`${API_URL}/users`, {
-                            username: `${username}`,
-                            fullName: `${fullName}`,
-                            password: `${password}`,
-                            email: `${email}`,
+                        Axios.post(`${API_URL}/users`,{ ...userData, role:"user"
+                            // username: `${username}`,
+                            // fullName: `${fullName}`,
+                            // password: `${password}`,
+                            // email: `${email}`,
                         })
                             .then((res) => {
                                 dispatch({
@@ -112,6 +113,7 @@ export const userKeepLogin = (userData) => {
 }
 
 export const LogoutHandler = () => {
+    cookieObj.remove("authData" , {path:"/"})
     return {
         type : ON_LOGOUT,
         payload : "",

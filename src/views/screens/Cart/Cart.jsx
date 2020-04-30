@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import './Cart.css'
 import Axios from 'axios'
 import { API_URL } from "../../../constants/API"
-import { Table } from 'reactstrap'
+import { Table, Alert } from 'reactstrap'
 import ButtonUI from "../../components/Button/Button"
 import swal from 'sweetalert';
+import { Link } from "react-router-dom";
 
-class Cart extends React.Component {
+
+ class Cart extends React.Component {
     state = {
         itemCart: []
 
@@ -16,28 +18,29 @@ class Cart extends React.Component {
     componentDidMount() {
         this.getItemCart();
     }
-        getItemCart = () => {
-            Axios.get(`${API_URL}/carts`, {
-                params: {
-                    userId: this.props.user.id,
-                    _expand: "product",
-                }
+
+    getItemCart = () => {
+        Axios.get(`${API_URL}/carts`, {
+            params: {
+                userId: this.props.user.id,
+                _expand: "product",
+            }
+        })
+            .then((res) => {
+                console.log(res.data)
+                this.setState({ itemCart: res.data })
             })
-                .then((res) => {
-                    console.log(res.data)
-                    this.setState({ itemCart: res.data })
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        }
-    
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
 
     deleteItemCart = (id) => {
         Axios.delete(`${API_URL}/carts/${id}`)
             .then((res) => {
                 console.log(res);
-                swal('Delete to cart', 'Your item has been deleted from your cart','success')
+                swal('Delete to cart', 'Your item has been deleted from your cart', 'success')
                 this.getItemCart();
             })
             .catch((err) => {
@@ -71,7 +74,7 @@ class Cart extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="text-center"></div>
+                {this.state.itemCart.length > 0 ? (
                 <Table hover size="sm">
                     <thead>
                         <tr>
@@ -84,6 +87,12 @@ class Cart extends React.Component {
                     </thead>
                     {this.renderCarts()}
                 </Table>
+                 ) : (
+                    <Alert>
+                      Your cart is empty! <Link to="/">Go shopping</Link>
+                    </Alert>
+                  )}
+                
             </div>
         )
     }

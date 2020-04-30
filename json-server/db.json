@@ -1,32 +1,20 @@
 {
   "users": [
     {
-      "username": "bagas",
+      "username": "admin",
       "fullName": "Bagas Yafitra Pandji",
-      "password": "123",
+      "password": "admin",
       "email": "bagasyafitrapandji.nk@gmail.com",
-      "id": 1
+      "id": 1,
+      "role": "admin"
     },
     {
-      "username": "kopong",
+      "username": "bagas",
       "fullName": "asd",
-      "password": "asd",
+      "password": "bagas",
       "email": "asd",
-      "id": 2
-    },
-    {
-      "username": "Ilham",
-      "fullName": "asd",
-      "password": "asd",
-      "email": "asd",
-      "id": 3
-    },
-    {
-      "username": "theo",
-      "fullName": "asd",
-      "password": "asd",
-      "email": "asd",
-      "id": 4
+      "id": 2,
+      "role": "user"
     }
   ],
   "products": [
@@ -35,13 +23,13 @@
       "price": 5000000,
       "category": "Phone",
       "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
-      "desc": "HP Terbaikk loh",
+      "desc": "HP wewew",
       "id": 1
     },
     {
       "productName": "iPad Pro 3",
       "price": 15000000,
-      "category": "Tablet",
+      "category": "Tab",
       "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
       "desc": "iPad Terbaikk loh",
       "id": 2
@@ -53,6 +41,15 @@
       "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/m/b/mbp15touch-silver-select-cto-201807_3_1.jpeg",
       "desc": "laptop Terbaikk loh",
       "id": 3
+    },
+    {
+      "ProductName": "",
+      "price": "20000000",
+      "category": "Phone",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
+      "desc": "Hp ini mahalbanget",
+      "productName": "Iphone 11 Pro ",
+      "id": 4
     }
   ],
   "carts": [
@@ -61,12 +58,6 @@
       "productId": 2,
       "quantity": 1,
       "id": 2
-    },
-    {
-      "userId": 1,
-      "productId": 1,
-      "quantity": 1,
-      "id": 4
     }
   ]
 }

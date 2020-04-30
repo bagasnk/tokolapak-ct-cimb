@@ -33,9 +33,9 @@ class Navbar extends React.Component {
 
   LogoutDataHandler = () => {
     this.props.onLogout()
-    cookiesObject.remove("authData")
 
-}
+
+  }
 
   render() {
     return (
@@ -51,49 +51,51 @@ class Navbar extends React.Component {
             onBlur={this.onBlur}
             className={`search-bar ${
               this.state.searchBarIsFocused ? "active" : null
-            }`}
+              }`}
             type="text"
             placeholder="Cari produk impianmu disini"
           />
         </div>
         <div className="d-flex flex-row align-items-center">
-        {this.props.user.id ? (
-          <>
-          <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
-          <p className="small ml-3 mr-4">{this.props.user.username}</p>
-          <Link style={{textDecoration:"none", color:"inherit"}} to="/cart">
-          <FontAwesomeIcon
-            className="mr-2"
-            icon={faShoppingCart}
-            style={{ fontSize: 24 }}
-          /></Link>
-          <CircleBg>
-            <small style={{ color: "#3C64B1", fontWeight: "bold" }}>4</small>
-          </CircleBg>
+          {this.props.user.id ? (
+            <>
+              <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
+              <p className="small ml-3 mr-4">{this.props.user.username}</p>
+              <Link style={{ textDecoration: "none", color: "inherit" }} to="/cart">
+                <FontAwesomeIcon
+                  className="mr-2"
+                  icon={faShoppingCart}
+                  style={{ fontSize: 24 }}
+                /></Link>
+              <CircleBg>
+                <small style={{ color: "#3C64B1", fontWeight: "bold" }}>4</small>
+              </CircleBg>
 
-          <ButtonUI className="ml-5" type="contained" value="Logout"  onClick={this.LogoutDataHandler}>
-          <Link style={{textDecoration:"none", color:"inherit"}} to="/auth">Logout</Link>
-          </ButtonUI>
-          </>
-        ):(
-          <>
-           <ButtonUI className="mr-3" type="textual">
-          <Link style={{textDecoration:"none", color:"inherit"}} to="/auth">Sign In</Link>
-          </ButtonUI>
-          
-          <ButtonUI type="contained">
-          <Link style={{textDecoration:"none", color:"inherit"}} to="/auth">Sign Up</Link>
-          </ButtonUI>
-          </>
-        )}
-           
-          
+
+              <Link style={{ textDecoration: "none", color: "inherit" }} to="/auth">
+                <ButtonUI className="ml-5" type="contained" value="Logout" onClick={this.LogoutDataHandler}>Logout</ButtonUI>
+              </Link>
+
+            </>
+          ) : (
+              <>
+                <ButtonUI className="mr-3" type="textual">
+                  <Link style={{ textDecoration: "none", color: "inherit" }} to="/auth">Sign In</Link>
+                </ButtonUI>
+
+                <ButtonUI type="contained">
+                  <Link style={{ textDecoration: "none", color: "inherit" }} to="/auth">Sign Up</Link>
+                </ButtonUI>
+              </>
+            )}
+
+
 
           {/* {this.props.user.id ? <ButtonUI 
           type="contained" 
           value="Logout" 
           onClick={this.LogoutDataHandler}>Log Out</ButtonUI> : null } */}
-          
+
         </div>
       </div>
     );
@@ -102,7 +104,7 @@ class Navbar extends React.Component {
 
 const mapStatetoProps = state => {
   return {
-      user: state.user
+    user: state.user
   }
 }
 

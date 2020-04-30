@@ -66,17 +66,11 @@ class AuthScreen extends React.Component {
         this.state.registerForm.email = ""
         this.setState({ errMsg: "" })
 
-        // this.setState({ username: "" })
-        // this.setState({ password: "" })
-        // this.setState({ fullName: "" })
-        // this.setState({ email: "" })
-        // this.setState({ errMsg: "" })
-
     }
 
     componentDidUpdate() {
         if (this.props.user.id) {
-            cookiesObject.set("authData", JSON.stringify(this.props.user))
+            cookiesObject.set("authData", JSON.stringify(this.props.user), {path:"/"})
         }
     }
 
