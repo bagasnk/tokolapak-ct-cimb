@@ -54,7 +54,7 @@
     {
       "productName": "iPhone 11 Pro Max",
       "price": "24000000",
-      "category": "",
+      "category": "Phone",
       "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
       "desc": "HP Kamera boba",
       "id": 5
@@ -92,7 +92,18 @@
       "id": 9
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "productId": 1,
+      "quantity": 2,
+      "id": 5
+    },
+    {
+      "productId": 6,
+      "quantity": 1,
+      "id": 6
+    }
+  ],
   "transactions": [
     {
       "userId": 2,
