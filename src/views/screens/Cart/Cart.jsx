@@ -119,7 +119,15 @@ class Cart extends React.Component {
             .then(res => {
                 swal("Success !!", "Transaksi selesai", "success");
                 res.data.map(val => {
-                    { this.deleteItemCart(val.id) }
+                    Axios.delete(`${API_URL}/carts/${val.id}`)
+                        .then((res) => {
+                            console.log(res);
+                            swal('Success!!', 'Transaksi anda berhasil', 'success')
+                            this.getItemCart();
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                     this.setState({ itemsTranscactions: [...this.state.itemsTranscactions, val.product] })
                 })
                 Axios.post(`${API_URL}/transactions`, {
