@@ -92,7 +92,14 @@
       "id": 9
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "userId": 2,
+      "productId": 2,
+      "quantity": 2,
+      "id": 1
+    }
+  ],
   "transactions": [
     {
       "userId": 2,

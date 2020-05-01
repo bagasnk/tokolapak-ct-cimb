@@ -117,7 +117,6 @@ class Cart extends React.Component {
             }
         })
             .then(res => {
-                swal("Success !!", "Transaksi selesai", "success");
                 res.data.map(val => {
                     Axios.delete(`${API_URL}/carts/${val.id}`)
                         .then((res) => {

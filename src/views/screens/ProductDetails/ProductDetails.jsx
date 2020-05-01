@@ -40,7 +40,7 @@ class ProductDetails extends React.Component {
                         })
                 } else {
                     Axios.post(`${API_URL}/carts`, {
-                        userId: this.props.user.userId,
+                        userId: this.props.user.id,
                         productId: this.state.productData.id,
                         quantity: 1,
                     })
