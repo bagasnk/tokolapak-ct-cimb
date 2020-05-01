@@ -13,10 +13,10 @@ import { UncontrolledCollapse, Button, CardBody, Card, Badge } from 'reactstrap'
 class Cart extends React.Component {
     state = {
         itemCart: [],
+        itemsTranscactions: [],
         kondisiCheckout: true,
-        userId:"",
         totalPrice: 0,
-        status:"pending"
+        status: "pending"
     }
 
 
@@ -87,25 +87,54 @@ class Cart extends React.Component {
     }
 
     renderCheckout = () => {
+        let totalPriceItems = 0
         const { itemCart } = this.state;
         return itemCart.map((val, idx) => {
+            totalPriceItems = val.quantity * val.product.price
             return (
                 <>
                     <tr>
                         <td>{idx + 1}</td>
                         <td>{val.product.productName}</td>
-                        <td>{
-                            new Intl.NumberFormat("id-ID",
-                                { style: "currency", currency: "IDR" }).format(val.product.price)
-                        }
-                        </td>
                         <td>{val.quantity}</td>
                         <td>{val.product.category}</td>
-                        <td><img src={val.product.image} alt="" style={{ height: "50px" }} /></td>
+                        <td>{
+                            new Intl.NumberFormat("id-ID",
+                                { style: "currency", currency: "IDR" }).format(totalPriceItems)
+                        }
+                        </td>
                     </tr>
                 </>
             )
         })
+    }
+
+    confirmBtn = () => {
+        Axios.get(`${API_URL}/carts`, {
+            params: {
+                userId: this.props.user.id,
+                _expand: "product"
+            }
+        })
+            .then(res => {
+                swal("Success !!", "Transaksi selesai", "success");
+                res.data.map(val => {
+                    { this.deleteItemCart(val.id) }
+                    this.setState({ itemsTranscactions: [...this.state.itemsTranscactions, val.product] })
+                })
+                Axios.post(`${API_URL}/transactions`, {
+                    userId: this.props.user.id,
+                    totalPrice: this.state.totalPrice,
+                    status: "pending",
+                    items: this.state.itemsTranscactions,
+                })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
@@ -136,30 +165,29 @@ class Cart extends React.Component {
                             (this.state.kondisiCheckout) ?
                                 <div>
                                     <UncontrolledCollapse toggler="#toggler">
-                                        <Card>
+                                        <Card style={{ width: "530px" }}>
                                             <CardBody>
                                                 <h4><Badge color="secondary">Saudara {this.props.user.username}, dimohon konfirmasi pembayaran</Badge></h4>
-                                                <Table striped size="sm">
+                                                <Table striped size="sm" style={{ width: "500px" }}>
                                                     <thead>
                                                         <tr>
                                                             <th>No.</th>
                                                             <th>Product Name</th>
-                                                            <th>Price</th>
                                                             <th>Quantity</th>
                                                             <th>Category</th>
-                                                            <th>Image</th>
+                                                            <th>Total Price</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         {this.renderCheckout()}
                                                     </tbody>
                                                 </Table>
-                                                <h4>Total Price : {
+                                                <h6>Total Price : {
                                                     new Intl.NumberFormat("id-ID",
-                                                    { style: "currency", currency: "IDR" }).format(this.state.totalPrice)
-                                                } </h4>
+                                                        { style: "currency", currency: "IDR" }).format(this.state.totalPrice)
+                                                } </h6>
                                                 <div className="d-flex justify-content-center">
-                                                    <ButtonUI type="outlined">Confirm</ButtonUI>
+                                                    <ButtonUI type="outlined" onClick={() => this.confirmBtn()}>Confirm</ButtonUI>
                                                 </div></CardBody>
                                         </Card>
                                     </UncontrolledCollapse>
