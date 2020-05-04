@@ -10,6 +10,7 @@ import Navbar from "./views/components/Navbar/Navbar";
 import AuthScreen from "./views/screens/Auth/AuthScreen";
 import ProductDetails from "./views/screens/ProductDetails/ProductDetails";
 import Wishlist from "./views/screens/Wishlist/Wishlist"
+import HistoryDetails from "./views/screens/History/HistoryDetails"
 import Cart from "./views/screens/Cart/Cart"
 import { userKeepLogin,cookieChecker } from './redux/actions';
 import AdminDashboard from "./views/screens/Admin/AdminDashboard";
@@ -53,6 +54,7 @@ class App extends React.Component {
             <Route exact path="/products/:productId" component={ProductDetails} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/wishlist" component={Wishlist} />
+            <Route exact path="/history" component={HistoryDetails} />
             {this.renderAdminRoutes()}
           </Switch>
           <div style={{ height: "120px" }} />

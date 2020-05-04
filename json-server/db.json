@@ -1,14 +1,6 @@
 {
   "users": [
     {
-      "username": "admin",
-      "fullName": "Bagas Yafitra Pandji",
-      "password": "admin",
-      "email": "bagasyafitrapandji.nk@gmail.com",
-      "id": 1,
-      "role": "admin"
-    },
-    {
       "username": "bagas",
       "fullName": "Bagas Yafitra User",
       "password": "bagas",
@@ -84,32 +76,14 @@
       "id": 9
     }
   ],
-  "carts": [
-    {
-      "userId": 3,
-      "productId": 3,
-      "quantity": 1,
-      "id": 1
-    },
-    {
-      "userId": 3,
-      "productId": 5,
-      "quantity": 3,
-      "id": 2
-    },
-    {
-      "userId": 3,
-      "productId": 2,
-      "quantity": 1,
-      "id": 3
-    }
-  ],
+  "carts": [],
   "transactions": [
     {
       "userId": 2,
       "totalPrice": 30000000,
-      "status": "pending",
-      "id": 1
+      "status": "Done",
+      "id": 1,
+      "dateTransactionsDone": "5/5/2020"
     },
     {
       "userId": 2,
@@ -128,8 +102,9 @@
     {
       "userId": 2,
       "totalPrice": 15000000,
-      "status": "pending",
-      "id": 4
+      "status": "Done",
+      "id": 4,
+      "dateTransactionsDone": "5/5/2020"
     },
     {
       "userId": 3,
@@ -142,15 +117,24 @@
       "totalPrice": 44000000,
       "status": "Done",
       "id": 6,
-      "dateTransactionsDone": "5/4/2020"
+      "dateTransactionsDone": "5/5/2020"
     },
     {
-      "userId": 1,
-      "totalPrice": 40000000,
+      "userId": 3,
+      "totalPrice": 20000000,
       "status": "Done",
-      "dateTransactions": "5/4/2020",
-      "id": 7,
-      "dateTransactionsDone": "5/4/2020"
+      "dateTransactions": "5/5/2020",
+      "id": 8,
+      "dateTransactionsDone": "5/5/2020"
+    },
+    {
+      "userId": 3,
+      "totalPrice": 20000000,
+      "status": "Done",
+      "dateTransactions": "5/5/2020",
+      "paymentMethod": "Credit",
+      "id": 9,
+      "dateTransactionsDone": "5/5/2020"
     }
   ],
   "transcations_details": [
@@ -212,33 +196,29 @@
     },
     {
       "productId": 3,
-      "transactionsId": 7,
+      "transactionsId": 8,
       "price": 20000000,
-      "totalPrice": 40000000,
-      "quantity": 2,
-      "id": 9
+      "totalPrice": 20000000,
+      "quantity": 1,
+      "id": 10
+    },
+    {
+      "productId": 3,
+      "transactionsId": 9,
+      "price": 20000000,
+      "totalPrice": 20000000,
+      "quantity": 1,
+      "id": 11
     }
   ],
   "wishlist": [
     {
       "userId": 3,
-      "productId": 5,
-      "id": 2
-    },
-    {
-      "userId": 3,
-      "productId": 9,
-      "id": 3
-    },
-    {
-      "userId": 3,
-      "productId": 9,
-      "id": 4
-    },
-    {
-      "userId": 3,
-      "productId": 2,
-      "id": 5
+      "productId": 3,
+      "id": 1
     }
+  ],
+  "history": [
+    
   ]
 }

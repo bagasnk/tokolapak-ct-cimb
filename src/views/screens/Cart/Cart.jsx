@@ -20,8 +20,12 @@ class Cart extends React.Component {
         quantity: "",
         productId: "",
         datePayments: new Date(),
+        paymentMethod :""
     }
 
+    inputHandler = (e, field) => {
+        this.setState({ [field]: e.target.value })
+    }
 
     componentDidMount() {
         this.getItemCart();
@@ -156,6 +160,7 @@ class Cart extends React.Component {
                     totalPrice: this.state.totalPrice,
                     status: "pending",
                     dateTransactions: this.state.datePayments.toLocaleDateString(),
+                    paymentMethod: this.state.paymentMethod,
                 })
                     .then(res => {
                         this.state.itemCart.map(val => {
@@ -183,7 +188,7 @@ class Cart extends React.Component {
             })
     }
 
-    
+
 
     render() {
         return (
@@ -230,6 +235,17 @@ class Cart extends React.Component {
                                                         {this.renderCheckout()}
                                                     </tbody>
                                                 </Table>
+                                                <div className="mt-6">
+                                                    <p>Silahkan pilih metode pembayaran yang dapat dilakukan :</p>
+                                                    <select
+                                                        value={this.state.paymentMethod}
+                                                        onChange={(e) => this.inputHandler(e, "paymentMethod")}
+                                                    >
+                                                        <option value="" disabled="disabled">payment method</option>
+                                                        <option value="Credit">Credit</option>
+                                                        <option value="Debit">Debit</option>
+                                                    </select>
+                                                </div>
                                                 <h6>Total Price : {
                                                     new Intl.NumberFormat("id-ID",
                                                         { style: "currency", currency: "IDR" }).format(this.state.totalPrice)
