@@ -34,6 +34,7 @@ class App extends React.Component {
       )
     }
   }
+  
   render() {
     if (this.props.user.cookieChecked) {
       return (

@@ -54,8 +54,8 @@ export default (state = init_state, action) => {
       };
     case COOKIE_CHECK:
       return { ...state, cookieChecked: true };
-    case ON_SEARCHFILTER_SUCCESS:
-      return {...state, cookieChecked:true, searchAndFilter: action.payload}
+    // case ON_SEARCHFILTER_SUCCESS:
+    //   return {...state, cookieChecked:true, searchAndFilter: action.payload}
     default:
       return { ...state }
   }

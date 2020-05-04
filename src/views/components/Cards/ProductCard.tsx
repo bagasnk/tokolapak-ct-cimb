@@ -22,6 +22,7 @@ class ProductCard extends React.Component<ProductCardProps> {
   render() {
     const { id, productName, price, review, image } = this.props.data;
     return (
+      <Link to={`/products/${id}`}>
       <div className={`product-card d-inline-block ${this.props.className}`}>
         <img
           src={image}
@@ -59,6 +60,7 @@ class ProductCard extends React.Component<ProductCardProps> {
           </ButtonUI>
         </div>
       </div>
+      </Link>
     );
   }
 }

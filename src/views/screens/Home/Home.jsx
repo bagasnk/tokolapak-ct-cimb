@@ -131,7 +131,7 @@ class Home extends React.Component {
   renderProducts = () => {
     return this.state.bestSellerData.map(val => {
       const { productName } = val
-      if (productName.toLowerCase().startsWith(this.props.user.searchAndFilter.toLowerCase()))
+      if (productName.toLowerCase().startsWith(this.props.search.searchAndFilter.toLowerCase()))
         return <ProductCard data={val} key={`bestseller-${val.id}`} className='m-3' />
     })
   }
@@ -238,6 +238,7 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    search: state.search
   };
 };
 

@@ -13,15 +13,30 @@ import { UncontrolledCollapse, Button, CardBody, Card, Badge } from 'reactstrap'
 class Cart extends React.Component {
     state = {
         itemCart: [],
-        itemsTranscactions: [],
         kondisiCheckout: true,
         totalPrice: 0,
-        status: "pending"
+        status: "pending",
+        checOutItem: "",
+        quantity: "",
+        productId: "",
     }
 
 
     componentDidMount() {
         this.getItemCart();
+    }
+
+    checkboxHandler = (e, idx) => {
+        const { checked } = e.target
+        if (checked) {
+            this.setState({ checOutItem: [...this.state.checOutItem, idx] })
+        } else {
+            this.setState({
+                checOutItem: [
+                    ...this.state.checOutItem.filter(val => val !== idx)
+                ]
+            })
+        }
     }
 
     getItemCart = () => {
@@ -72,6 +87,12 @@ class Cart extends React.Component {
                     <td>{val.quantity}</td>
                     <td>{val.product.category}</td>
                     <td><img src={val.product.image} alt="" style={{ height: "50px" }} /></td>
+                    <td>
+                        <input
+                            type="checkbox"
+                            onChange={(e) => this.checkboxHandler(e, idx)}
+                            className="form-control" />
+                    </td>
                     <th scope="row">
                         <div className="d-flex justify-content-center">
                             <ButtonUI
@@ -116,7 +137,7 @@ class Cart extends React.Component {
                 _expand: "product"
             }
         })
-            .then(res => {
+            .then((res) => {
                 res.data.map(val => {
                     Axios.delete(`${API_URL}/carts/${val.id}`)
                         .then((res) => {
@@ -127,19 +148,35 @@ class Cart extends React.Component {
                         .catch((err) => {
                             console.log(err);
                         });
-                    this.setState({ itemsTranscactions: [...this.state.itemsTranscactions, val.product] })
+
                 })
                 Axios.post(`${API_URL}/transactions`, {
                     userId: this.props.user.id,
                     totalPrice: this.state.totalPrice,
                     status: "pending",
-                    items: this.state.itemsTranscactions,
                 })
                     .then(res => {
-                        console.log(res.data)
+                        this.state.itemCart.map(val => {
+                            Axios.post(`${API_URL}/transcations_details`, {
+                                productId: val.product.id,
+                                transactionsId: res.data.id,
+                                price: val.product.price,
+                                totalPrice: val.product.price * val.quantity,
+                                quantity: val.quantity
+                            })
+                                .then((res) => {
+                                    console.log(res)
+                                })
+                                .then((err) => {
+                                    console.log(err)
+                                })
+                        })
+                    })
+                    .then((err) => {
+                        console.log(err)
                     })
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err)
             })
     }
