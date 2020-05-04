@@ -60,7 +60,6 @@ class Navbar extends React.Component {
     })
       .then(res => {
         this.setState({numbers : res.data.length})
-        console.log(this.state.numbers)
       })
       .catch(err =>{
         console.log(err)
@@ -113,13 +112,35 @@ class Navbar extends React.Component {
                           Dashboard
                     </Link>
                       </DropdownItem>
-                      <DropdownItem>Members</DropdownItem>
-                      <DropdownItem>Payments</DropdownItem>
+
+                      <DropdownItem>
+                      <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/admin/member"
+                        >
+                          Members
+                    </Link>
+                    </DropdownItem>
+                      <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/admin/payment"
+                        >
+                          Payments
+                    </Link>
+                    </DropdownItem>
                     </>
                   ) : (
                       <>
                         <DropdownItem>History</DropdownItem>
-                        <DropdownItem>Wishlist</DropdownItem>
+                        <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/wishlist"
+                        >
+                          Wishlist
+                    </Link>
+                    </DropdownItem>
 
                       </>
                     )}

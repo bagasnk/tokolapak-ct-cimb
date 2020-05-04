@@ -19,6 +19,7 @@ class Cart extends React.Component {
         checOutItem: "",
         quantity: "",
         productId: "",
+        datePayments: new Date(),
     }
 
 
@@ -154,6 +155,7 @@ class Cart extends React.Component {
                     userId: this.props.user.id,
                     totalPrice: this.state.totalPrice,
                     status: "pending",
+                    dateTransactions: this.state.datePayments.toLocaleDateString(),
                 })
                     .then(res => {
                         this.state.itemCart.map(val => {
@@ -180,6 +182,8 @@ class Cart extends React.Component {
                 console.log(err)
             })
     }
+
+    
 
     render() {
         return (

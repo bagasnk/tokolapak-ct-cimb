@@ -110,7 +110,8 @@ class AdminDashboard extends React.Component {
                   >
                     Edit
                   </ButtonUI>
-                  <ButtonUI className="mt-3" type="textual">
+                  <ButtonUI className="mt-3"  onClick={(_) => this.deleteBtnHandler(id)}
+                    type="textual">
                     Delete
                   </ButtonUI>
                 </div>
@@ -149,6 +150,7 @@ class AdminDashboard extends React.Component {
         swal("Error!", "Your item could not be added to the list", "error");
       });
   };
+
   editBtnHandler = (idx) => {
     this.setState({
       editForm: {
@@ -157,6 +159,18 @@ class AdminDashboard extends React.Component {
       modalOpen: true,
     });
   };
+
+  deleteBtnHandler = (id) => {
+    Axios.delete(`${API_URL}/products/${id}`)
+    .then((res) => {
+      swal("Success!", "Your item has been deleted", "sucess");
+      this.getProductList()
+    })
+    .then((err) => {
+      console.log(err)
+    })
+  }
+  
   editProductHandler = () => {
     Axios.put(
       `${API_URL}/products/${this.state.editForm.id}`,

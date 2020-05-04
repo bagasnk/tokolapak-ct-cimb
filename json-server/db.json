@@ -10,22 +10,22 @@
     },
     {
       "username": "bagas",
-      "fullName": "asd",
+      "fullName": "Bagas Yafitra User",
       "password": "bagas",
-      "email": "asd",
+      "email": "bagas",
       "id": 2,
-      "role": "user"
+      "role": "admin"
+    },
+    {
+      "username": "ilham",
+      "password": "ilham",
+      "fullName": "ilham faizar",
+      "email": "ilham@gmail.com",
+      "role": "user",
+      "id": 3
     }
   ],
   "products": [
-    {
-      "productName": "iPhone 7 +",
-      "price": 5000000,
-      "category": "Phone",
-      "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
-      "desc": "HP Terbaikk lohwww",
-      "id": 1
-    },
     {
       "productName": "iPad Pro 3",
       "price": 15000000,
@@ -60,14 +60,6 @@
       "id": 5
     },
     {
-      "productName": "iPhone 11 Max abis",
-      "price": "123123123",
-      "category": "Phone",
-      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
-      "desc": "asdasdasdsd",
-      "id": 6
-    },
-    {
       "productName": "iPhone Max bet",
       "price": "3132312",
       "category": "Phone",
@@ -92,7 +84,26 @@
       "id": 9
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "userId": 3,
+      "productId": 3,
+      "quantity": 1,
+      "id": 1
+    },
+    {
+      "userId": 3,
+      "productId": 5,
+      "quantity": 3,
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "productId": 2,
+      "quantity": 1,
+      "id": 3
+    }
+  ],
   "transactions": [
     {
       "userId": 2,
@@ -103,31 +114,46 @@
     {
       "userId": 2,
       "totalPrice": 30000000,
-      "status": "pending",
-      "id": 2
+      "status": "Done",
+      "id": 2,
+      "dateTransactionsDone": "5/4/2020"
     },
     {
       "userId": 2,
       "totalPrice": 15000000,
-      "status": "pending",
-      "id": 3
+      "status": "Done",
+      "id": 3,
+      "dateTransactionsDone": "5/4/2020"
     },
     {
       "userId": 2,
       "totalPrice": 15000000,
       "status": "pending",
       "id": 4
+    },
+    {
+      "userId": 3,
+      "totalPrice": 35000000,
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "totalPrice": 44000000,
+      "status": "Done",
+      "id": 6,
+      "dateTransactionsDone": "5/4/2020"
+    },
+    {
+      "userId": 1,
+      "totalPrice": 40000000,
+      "status": "Done",
+      "dateTransactions": "5/4/2020",
+      "id": 7,
+      "dateTransactionsDone": "5/4/2020"
     }
   ],
   "transcations_details": [
-    {
-      "productId": 1,
-      "transactionsId": 2,
-      "price": 5000000,
-      "totalPrice": 10000000,
-      "quantity": 2,
-      "id": 1
-    },
     {
       "productId": 3,
       "transactionsId": 2,
@@ -151,9 +177,68 @@
       "totalPrice": 15000000,
       "quantity": 1,
       "id": 4
+    },
+    {
+      "productId": 3,
+      "transactionsId": 5,
+      "price": 20000000,
+      "totalPrice": 20000000,
+      "quantity": 1,
+      "id": 5
+    },
+    {
+      "productId": 2,
+      "transactionsId": 5,
+      "price": 15000000,
+      "totalPrice": 15000000,
+      "quantity": 1,
+      "id": 6
+    },
+    {
+      "productId": 3,
+      "transactionsId": 6,
+      "price": 20000000,
+      "totalPrice": 20000000,
+      "quantity": 1,
+      "id": 7
+    },
+    {
+      "productId": 5,
+      "transactionsId": 6,
+      "price": "24000000",
+      "totalPrice": 24000000,
+      "quantity": 1,
+      "id": 8
+    },
+    {
+      "productId": 3,
+      "transactionsId": 7,
+      "price": 20000000,
+      "totalPrice": 40000000,
+      "quantity": 2,
+      "id": 9
     }
   ],
   "wishlist": [
-    
+    {
+      "userId": 3,
+      "productId": 5,
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "productId": 9,
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "productId": 9,
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "productId": 2,
+      "id": 5
+    }
   ]
 }

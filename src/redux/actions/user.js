@@ -127,9 +127,3 @@ export const cookieChecker = () => {
     }
 }
 
-// export const SearchAndFilterHandler = (text) => {
-//     return {
-//         type: ON_SEARCHFILTER_SUCCESS,
-//         payload: text,
-//     }
-// }

@@ -1,90 +1,120 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import './Cart.css'
+import './Wishlist.css'
 import Axios from 'axios'
 import { API_URL } from "../../../constants/API"
 import { Table, Alert } from 'reactstrap'
 import ButtonUI from "../../components/Button/Button"
 import swal from 'sweetalert';
 import { Link } from "react-router-dom";
-import { UncontrolledCollapse, Button, CardBody, Card, Badge } from 'reactstrap';
 
 class Wishlist extends React.Component {
     state = {
-        itemCart: [],
-        kondisiCheckout: true,
-        totalPrice: 0,
-        status: "pending",
-        checOutItem: "",
-        quantity: "",
-        productId: "",
+        itemWishList: [],
     }
-}
 
-addToWishlistHandler = () => {
-    Axios.get(`${API_URL}/wishlist`, {
-        params: {
-            productId: this.state.productData.id,
-            userId: this.props.user.id,
-        }
-    })
-        .then((res) => {
-            if (res.data.length !== 0) {
-                Axios.patch(`${API_URL}/wishlist/${res.data[0].id}`, {
-                    quantity: res.data[0].quantity + 1
-                })
-                    .then((res) => {
-                        console.log(res.data)
-                        swal("Add to carts", "Your item has been added to your cart", "success");
-                    })
-            } else {
-                Axios.post(`${API_URL}/wishlist`, {
-                    userId: this.props.user.id,
-                    productId: this.state.productData.id,
-                    quantity: 1,
-                })
-                    .then((res) => {
-                        console.log(res);
-                        swal("Add to carts", "Your item has been added to your cart", "success");
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
+
+    componentDidMount(){
+        {this.getItemWishList()}
+    }
+    getItemWishList = () => {
+        Axios.get(`${API_URL}/wishlist`, {
+            params: {
+                userId: this.props.user.id,
+                _expand: "product",
             }
         })
-};
-
-getItemCart = () => {
-    let totalPriceItems = 0
-    Axios.get(`${API_URL}/carts`, {
-        params: {
-            userId: this.props.user.id,
-            _expand: "product",
-        }
-    })
-        .then((res) => {
-            res.data.map((val) => {
-                totalPriceItems += val.quantity * val.product.price
+            .then((res) => {
+                this.setState({ itemWishList: res.data })
             })
-            this.setState({ itemCart: res.data, totalPrice: totalPriceItems })
-
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-}
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
 
-deleteItemWishList = (id) => {
-    Axios.delete(`${API_URL}/wishlist/${id}`)
-        .then((res) => {
-            console.log(res);
-            swal('Delete to wishlist', 'Your item has been deleted from your wishlist', 'success')
-            this.getItemCart();
-        })
-        .catch((err) => {
-            console.log(err);
+    deleteItemWishList = (id) => {
+        Axios.delete(`${API_URL}/wishlist/${id}`)
+            .then((res) => {
+                console.log(res);
+                swal('Delete to wishlist', 'Your item has been deleted from your wishlist', 'success')
+                this.getItemWishList();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+    renderWishlist = () => {
+        return this.state.itemWishList.map((val, idx) => {
+            const { product, id , productId} = val;
+            const { productName, image, price } = product;
+
+            return (
+                <tr>
+                    <td>{idx + 1}</td>
+                    <td>{id}</td>
+                    <td>{productName}</td>
+                    <td>
+                        {new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                        }).format(price)}
+                    </td>
+
+                    <td>
+                        {""}
+                        <img
+                            src={image}
+                            alt=""
+                            style={{ width: "100px", height: "200px", objectFit: "contain" }}
+                        ></img>
+                    </td>
+                    <td colSpan={2}>
+                        <ButtonUI onClick={() => this.deleteItemWishList(id)}>
+                            Already Purchased!{" "}
+                        </ButtonUI>
+                        <ButtonUI
+                            className="mt-3"
+                            type="textual"
+                        >
+                            <Link style={{ color: "inherit", textDecoration: "none" }} to={`/products/${productId}`}>
+                                BUY NOW!!
+                  </Link>
+                        </ButtonUI>
+                    </td>
+                </tr>
+            );
         });
+    };
+
+    render() {
+        return (
+            <div className="container">
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Id</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    {this.state.itemWishList.length != 0 ? (
+                        <tbody>{this.renderWishlist()}</tbody>
+                    ) : (
+                            <Alert>
+                                Your Wishlist is empty! <Link to="/"></Link>
+                            </Alert>
+                        )}
+                </Table>
+            </div>
+        );
+    }
+
+
 }
 
 const mapStateToProps = (state) => {
