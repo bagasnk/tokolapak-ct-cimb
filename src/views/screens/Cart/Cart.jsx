@@ -20,7 +20,7 @@ class Cart extends React.Component {
         quantity: "",
         productId: "",
         datePayments: new Date(),
-        paymentMethod :""
+        jasaPengiriman: "0"
     }
 
     inputHandler = (e, field) => {
@@ -57,7 +57,6 @@ class Cart extends React.Component {
                     totalPriceItems += val.quantity * val.product.price
                 })
                 this.setState({ itemCart: res.data, totalPrice: totalPriceItems })
-
             })
             .catch((err) => {
                 console.log(err)
@@ -116,7 +115,7 @@ class Cart extends React.Component {
         let totalPriceItems = 0
         const { itemCart } = this.state;
         return itemCart.map((val, idx) => {
-            totalPriceItems = val.quantity * val.product.price
+            totalPriceItems = (val.quantity * val.product.price)
             return (
                 <>
                     <tr>
@@ -130,6 +129,7 @@ class Cart extends React.Component {
                         }
                         </td>
                     </tr>
+
                 </>
             )
         })
@@ -156,17 +156,18 @@ class Cart extends React.Component {
 
                 })
                 Axios.post(`${API_URL}/transactions`, {
+                    username: this.props.user.username,
                     userId: this.props.user.id,
-                    totalPrice: this.state.totalPrice,
+                    totalPrice: this.state.totalPrice + parseInt(this.state.jasaPengiriman),
                     status: "pending",
                     dateTransactions: this.state.datePayments.toLocaleDateString(),
-                    paymentMethod: this.state.paymentMethod,
+                    jasaPengiriman: this.state.jasaPengiriman,
                 })
                     .then(res => {
                         this.state.itemCart.map(val => {
                             Axios.post(`${API_URL}/transcations_details`, {
                                 productId: val.product.id,
-                                transactionsId: res.data.id,
+                                transactionId: res.data.id,
                                 price: val.product.price,
                                 totalPrice: val.product.price * val.quantity,
                                 quantity: val.quantity
@@ -187,8 +188,6 @@ class Cart extends React.Component {
                 console.log(err)
             })
     }
-
-
 
     render() {
         return (
@@ -238,18 +237,21 @@ class Cart extends React.Component {
                                                 <div className="mt-6">
                                                     <p>Silahkan pilih metode pembayaran yang dapat dilakukan :</p>
                                                     <select
-                                                        value={this.state.paymentMethod}
-                                                        onChange={(e) => this.inputHandler(e, "paymentMethod")}
+                                                        value={this.state.jasaPengiriman}
+                                                        onChange={(e) => this.inputHandler(e, "jasaPengiriman")}
                                                     >
-                                                        <option value="" disabled="disabled">payment method</option>
-                                                        <option value="Credit">Credit</option>
-                                                        <option value="Debit">Debit</option>
+                                                        <option value="0" disabled="disabled">Jenis pengiriman</option>
+                                                        <option value="100000">Instant :  100.000</option>
+                                                        <option value="50000">Same Day : 50.000</option>
+                                                        <option value="20000">Express : 20.000</option>
+                                                        <option value="0">Economy : Free</option>
                                                     </select>
                                                 </div>
                                                 <h6>Total Price : {
                                                     new Intl.NumberFormat("id-ID",
-                                                        { style: "currency", currency: "IDR" }).format(this.state.totalPrice)
+                                                        { style: "currency", currency: "IDR" }).format(this.state.totalPrice + parseInt(this.state.jasaPengiriman))
                                                 } </h6>
+
                                                 <div className="d-flex justify-content-center">
                                                     <ButtonUI type="outlined" onClick={() => this.confirmBtn()}>Confirm</ButtonUI>
                                                 </div></CardBody>

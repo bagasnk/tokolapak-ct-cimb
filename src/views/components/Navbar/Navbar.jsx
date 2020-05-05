@@ -129,10 +129,25 @@ class Navbar extends React.Component {
                           Payments
                     </Link>
                     </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/admin/report"
+                        >
+                          Reports
+                    </Link>
+                    </DropdownItem>
                     </>
                   ) : (
                       <>
-                        <DropdownItem>History</DropdownItem>
+                        <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/history"
+                        >
+                          History
+                    </Link>
+                        </DropdownItem>
                         <DropdownItem>
                         <Link
                           style={{ color: "inherit", textDecoration: "none" }}

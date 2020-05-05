@@ -13,10 +13,15 @@ class AdminPayments extends React.Component {
         modalOpen: false,
     }
 
-    getPaymentsList = () => {
-        Axios.get(`${API_URL}/transactions`)
+    getPaymentsList = (val) => {
+        Axios.get(`${API_URL}/transactions`, {
+            params: {
+                status: val,
+            }
+        })
             .then((res) => {
                 this.setState({ productList: res.data });
+                
             })
             .catch((err) => {
                 console.log(err);
@@ -62,7 +67,7 @@ class AdminPayments extends React.Component {
                         }}
                     >
                         <td> {idx + 1} </td>
-                        <td> Id user : {val.userId} </td>
+                        <td> {val.username} </td>
                         <td> {val.status}</td>
                         <td> {val.dateTransactions}</td>
                         <td> {val.dateTransactionsDone}</td>
@@ -84,13 +89,6 @@ class AdminPayments extends React.Component {
                                                     currency: "IDR",
                                                 }).format(val.totalPrice)}
                                             </span>
-                                        </h6>
-                                        <h6>
-                                            Payment Method:
-                                            <span style={{ fontWeight: "normal" }}>
-                                                {val.paymentMethod}
-                                            </span>
-
                                         </h6>
                                     </div>
                                 </div>
@@ -116,6 +114,20 @@ class AdminPayments extends React.Component {
                     <caption className="p-3">
                         <h2>Products</h2>
                     </caption>
+                    <div className="d-flex justify-content-center align-items-center">
+                    <ButtonUI
+                                        onClick={(_) => this.getPaymentsList("pending")}
+                                        type="contained"
+                                    >
+                                        Pending
+                      </ButtonUI>
+                      <ButtonUI
+                                        onClick={(_) => this.getPaymentsList("Done")}
+                                        type="contained"
+                                    >
+                                        Done
+                      </ButtonUI>
+                      </div>
                     <table className="dashboard-table">
                         <thead>
                             <tr>
@@ -128,6 +140,7 @@ class AdminPayments extends React.Component {
                         </thead>
                         <tbody>{this.renderProductList()}</tbody>
                     </table>
+                   
                 </div>
 
             </div>

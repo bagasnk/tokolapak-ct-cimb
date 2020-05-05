@@ -43,7 +43,6 @@ class ProductDetails extends React.Component {
                         userId: this.props.user.id,
                         productId: this.state.productData.id,
                         quantity: 1,
-                        metodePembayaran: "Credit",
                     })
                         .then((res) => {
                             console.log(res);
