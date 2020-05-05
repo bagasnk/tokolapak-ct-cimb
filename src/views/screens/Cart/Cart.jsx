@@ -8,6 +8,8 @@ import ButtonUI from "../../components/Button/Button"
 import swal from 'sweetalert';
 import { Link } from "react-router-dom";
 import { UncontrolledCollapse, Button, CardBody, Card, Badge } from 'reactstrap';
+import {qtyCartHandler} from "../../../redux/actions";
+
 
 
 class Cart extends React.Component {
@@ -70,6 +72,18 @@ class Cart extends React.Component {
                 console.log(res);
                 swal('Delete to cart', 'Your item has been deleted from your cart', 'success')
                 this.getItemCart();
+                Axios.get(`${API_URL}/carts`, {
+                    params: {
+                      userId: this.props.user.id,
+                      _expand: "product"
+                    }
+                  })
+                .then((res) => {
+                    this.props.onQtyCartHandler(res.data.length)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
             })
             .catch((err) => {
                 console.log(err);
@@ -149,6 +163,19 @@ class Cart extends React.Component {
                             console.log(res);
                             swal('Success!!', 'Transaksi anda berhasil', 'success')
                             this.getItemCart();
+                            Axios.get(`${API_URL}/carts`, {
+                                params: {
+                                  userId: this.props.user.id,
+                                  _expand: "product"
+                                }
+                              })
+                            .then((res) => {
+                                this.props.onQtyCartHandler(res.data.length)
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
+                            
                         })
                         .catch((err) => {
                             console.log(err);
@@ -277,4 +304,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = {
+    onQtyCartHandler: qtyCartHandler,
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

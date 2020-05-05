@@ -79,244 +79,132 @@
   "carts": [],
   "transactions": [
     {
+      "username": "bagas",
       "userId": 2,
-      "totalPrice": 30000000,
+      "totalPrice": 76100000,
       "status": "Done",
+      "dateTransactions": "5/5/2020",
+      "jasaPengiriman": "100000",
       "id": 1,
       "dateTransactionsDone": "5/5/2020"
     },
     {
-      "userId": 2,
-      "totalPrice": 30000000,
+      "username": "ilham",
+      "userId": 3,
+      "totalPrice": 46020000,
       "status": "Done",
+      "dateTransactions": "5/5/2020",
+      "jasaPengiriman": "20000",
       "id": 2,
-      "dateTransactionsDone": "5/4/2020"
+      "dateTransactionsDone": "5/5/2020"
     },
     {
+      "username": "bagas",
       "userId": 2,
-      "totalPrice": 15000000,
+      "totalPrice": 6020000,
       "status": "Done",
+      "dateTransactions": "5/5/2020",
+      "jasaPengiriman": "20000",
       "id": 3,
-      "dateTransactionsDone": "5/4/2020"
+      "dateTransactionsDone": "5/5/2020"
     },
     {
+      "username": "bagas",
       "userId": 2,
-      "totalPrice": 15000000,
+      "totalPrice": 15020000,
       "status": "Done",
+      "dateTransactions": "5/5/2020",
+      "jasaPengiriman": "20000",
       "id": 4,
       "dateTransactionsDone": "5/5/2020"
     },
     {
-      "userId": 3,
-      "totalPrice": 35000000,
-      "status": "pending",
-      "id": 5
-    },
-    {
-      "userId": 3,
-      "totalPrice": 44000000,
-      "status": "Done",
-      "id": 6,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 3,
-      "totalPrice": 20000000,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "id": 8,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 3,
-      "totalPrice": 20000000,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "paymentMethod": "Credit",
-      "id": 9,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 2,
-      "totalPrice": 26000000,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "paymentMethod": "Debit",
-      "id": 10,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 3,
-      "totalPrice": 40000000,
-      "status": "pending",
-      "dateTransactions": "5/5/2020",
-      "paymentMethod": "Debit",
-      "id": 11
-    },
-    {
-      "userId": 3,
-      "totalPrice": 20000000,
-      "status": "pending",
-      "dateTransactions": "5/5/2020",
-      "paymentMethod": "50000",
-      "id": 12
-    },
-    {
-      "userId": 3,
-      "totalPrice": 5300000,
-      "status": "pending",
-      "dateTransactions": "5/5/2020",
-      "paymentMethod": "50000",
-      "id": 13
-    },
-    {
-      "userId": 3,
-      "totalPrice": 5300000,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "paymentMethod": "20000",
-      "id": 14,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 2,
-      "totalPrice": "6000000100000",
-      "status": "pending",
-      "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "100000",
-      "id": 15
-    },
-    {
-      "userId": 2,
-      "status": "pending",
-      "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "100000",
-      "id": 16
-    },
-    {
-      "userId": 2,
-      "totalPrice": 6100000,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "100000",
-      "id": 17,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
+      "username": "bagas",
       "userId": 2,
       "totalPrice": 15100000,
       "status": "Done",
       "dateTransactions": "5/5/2020",
       "jasaPengiriman": "100000",
-      "id": 18,
+      "id": 5,
       "dateTransactionsDone": "5/5/2020"
     },
     {
+      "username": "bagas",
       "userId": 2,
-      "totalPrice": 20000000,
+      "totalPrice": 40000000,
       "status": "Done",
       "dateTransactions": "5/5/2020",
       "jasaPengiriman": "0",
-      "id": 19,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 2,
-      "totalPrice": 3232312,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "100000",
-      "id": 20,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 2,
-      "totalPrice": 6364624,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "100000",
-      "id": 21,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "userId": 2,
-      "totalPrice": 43020000,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "20000",
-      "id": 22,
+      "id": 6,
       "dateTransactionsDone": "5/5/2020"
     },
     {
       "username": "bagas",
       "userId": 2,
-      "totalPrice": 15050000,
-      "status": "Done",
-      "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "50000",
-      "id": 23,
-      "dateTransactionsDone": "5/5/2020"
-    },
-    {
-      "username": "bagas",
-      "userId": 2,
-      "totalPrice": 34400000,
+      "totalPrice": 58700000,
       "status": "Done",
       "dateTransactions": "5/5/2020",
       "jasaPengiriman": "100000",
-      "id": 24,
+      "id": 7,
       "dateTransactionsDone": "5/5/2020"
     },
     {
       "username": "bagas",
       "userId": 2,
-      "totalPrice": 39000000,
-      "status": "Done",
+      "totalPrice": 94000000,
+      "status": "pending",
       "dateTransactions": "5/5/2020",
-      "jasaPengiriman": "100000",
-      "id": 25,
-      "dateTransactionsDone": "5/5/2020"
+      "jasaPengiriman": "0",
+      "id": 8
     },
     {
       "username": "bagas",
       "userId": 2,
-      "totalPrice": 99100000,
+      "totalPrice": 46100000,
       "status": "pending",
       "dateTransactions": "5/5/2020",
       "jasaPengiriman": "100000",
-      "id": 26
+      "id": 9
     }
   ],
   "transcations_details": [
     {
-      "productId": 3,
-      "transactionId": 2,
-      "price": 20000000,
-      "totalPrice": 20000000,
-      "quantity": 1,
+      "productId": 2,
+      "transactionId": 1,
+      "price": 15000000,
+      "totalPrice": 30000000,
+      "quantity": 2,
+      "id": 1
+    },
+    {
+      "productId": 4,
+      "transactionId": 1,
+      "price": "23000000",
+      "totalPrice": 46000000,
+      "quantity": 2,
       "id": 2
     },
     {
-      "productId": 2,
-      "transactionId": 3,
-      "price": 15000000,
-      "totalPrice": 15000000,
-      "quantity": 1,
+      "productId": 4,
+      "transactionId": 2,
+      "price": "23000000",
+      "totalPrice": 46000000,
+      "quantity": 2,
       "id": 3
+    },
+    {
+      "productId": 8,
+      "transactionId": 3,
+      "price": "6000000",
+      "totalPrice": 6000000,
+      "quantity": 1,
+      "id": 4
     },
     {
       "productId": 2,
       "transactionId": 4,
       "price": 15000000,
       "totalPrice": 15000000,
-      "quantity": 1,
-      "id": 4
-    },
-    {
-      "productId": 3,
-      "transactionId": 5,
-      "price": 20000000,
-      "totalPrice": 20000000,
       "quantity": 1,
       "id": 5
     },
@@ -332,209 +220,51 @@
       "productId": 3,
       "transactionId": 6,
       "price": 20000000,
-      "totalPrice": 20000000,
-      "quantity": 1,
+      "totalPrice": 40000000,
+      "quantity": 2,
       "id": 7
     },
     {
       "productId": 5,
-      "transactionId": 6,
+      "transactionId": 7,
       "price": "24000000",
-      "totalPrice": 24000000,
-      "quantity": 1,
+      "totalPrice": 48000000,
+      "quantity": 2,
       "id": 8
     },
     {
-      "productId": 3,
+      "productId": 9,
+      "transactionId": 7,
+      "price": "5300000",
+      "totalPrice": 10600000,
+      "quantity": 2,
+      "id": 9
+    },
+    {
+      "productId": 5,
       "transactionId": 8,
-      "price": 20000000,
-      "totalPrice": 20000000,
-      "quantity": 1,
+      "price": "24000000",
+      "totalPrice": 48000000,
+      "quantity": 2,
       "id": 10
     },
     {
-      "productId": 3,
-      "transactionId": 9,
-      "price": 20000000,
-      "totalPrice": 20000000,
-      "quantity": 1,
+      "productId": 4,
+      "transactionId": 8,
+      "price": "23000000",
+      "totalPrice": 46000000,
+      "quantity": 2,
       "id": 11
     },
     {
-      "productId": 3,
-      "transactionId": 10,
-      "price": 20000000,
-      "totalPrice": 20000000,
-      "quantity": 1,
+      "productId": 4,
+      "transactionId": 9,
+      "price": "23000000",
+      "totalPrice": 46000000,
+      "quantity": 2,
       "id": 12
-    },
-    {
-      "productId": 8,
-      "transactionId": 10,
-      "price": "6000000",
-      "totalPrice": 6000000,
-      "quantity": 1,
-      "id": 13
-    },
-    {
-      "productId": 3,
-      "transactionId": 11,
-      "price": 20000000,
-      "totalPrice": 40000000,
-      "quantity": 2,
-      "id": 14
-    },
-    {
-      "productId": 9,
-      "transactionId": 13,
-      "price": "5300000",
-      "totalPrice": 5300000,
-      "quantity": 1,
-      "id": 15
-    },
-    {
-      "productId": 9,
-      "transactionId": 14,
-      "price": "5300000",
-      "totalPrice": 5300000,
-      "quantity": 1,
-      "id": 16
-    },
-    {
-      "productId": 8,
-      "transactionId": 15,
-      "price": "6000000",
-      "totalPrice": 6000000,
-      "quantity": 1,
-      "id": 17
-    },
-    {
-      "productId": 8,
-      "transactionId": 16,
-      "price": "6000000",
-      "totalPrice": 6000000,
-      "quantity": 1,
-      "id": 18
-    },
-    {
-      "productId": 8,
-      "transactionId": 17,
-      "price": "6000000",
-      "totalPrice": 6000000,
-      "quantity": 1,
-      "id": 19
-    },
-    {
-      "productId": 2,
-      "transactionId": 18,
-      "price": 15000000,
-      "totalPrice": 15000000,
-      "quantity": 1,
-      "id": 20
-    },
-    {
-      "productId": 3,
-      "transactionId": 19,
-      "price": 20000000,
-      "totalPrice": 20000000,
-      "quantity": 1,
-      "id": 21
-    },
-    {
-      "productId": 7,
-      "transactionId": 21,
-      "price": "3132312",
-      "totalPrice": 6264624,
-      "quantity": 2,
-      "id": 22
-    },
-    {
-      "productId": 3,
-      "transactionId": 22,
-      "price": 20000000,
-      "totalPrice": 20000000,
-      "quantity": 1,
-      "id": 23
-    },
-    {
-      "productId": 4,
-      "transactionId": 22,
-      "price": "23000000",
-      "totalPrice": 23000000,
-      "quantity": 1,
-      "id": 24
-    },
-    {
-      "productId": 2,
-      "transactionId": 23,
-      "price": 15000000,
-      "totalPrice": 15000000,
-      "quantity": 1,
-      "id": 25
-    },
-    {
-      "productId": 4,
-      "transactionId": 24,
-      "price": "23000000",
-      "totalPrice": 23000000,
-      "quantity": 1,
-      "id": 26
-    },
-    {
-      "productId": 8,
-      "transactionId": 24,
-      "price": "6000000",
-      "totalPrice": 6000000,
-      "quantity": 1,
-      "id": 27
-    },
-    {
-      "productId": 9,
-      "transactionId": 24,
-      "price": "5300000",
-      "totalPrice": 5300000,
-      "quantity": 1,
-      "id": 28
-    },
-    {
-      "productId": 9,
-      "transactionsId": 25,
-      "price": "5300000",
-      "totalPrice": 15900000,
-      "quantity": 3,
-      "id": 29
-    },
-    {
-      "productId": 4,
-      "transactionsId": 25,
-      "price": "23000000",
-      "totalPrice": 23000000,
-      "quantity": 1,
-      "id": 30
-    },
-    {
-      "productId": 4,
-      "transactionId": 26,
-      "price": "23000000",
-      "totalPrice": 69000000,
-      "quantity": 3,
-      "id": 31
-    },
-    {
-      "productId": 2,
-      "transactionId": 26,
-      "price": 15000000,
-      "totalPrice": 30000000,
-      "quantity": 2,
-      "id": 32
     }
   ],
-  "wishlist": [
-    {
-      "userId": 3,
-      "productId": 3,
-      "id": 1
-    }
-  ],
+  "wishlist": [],
   "history": []
 }

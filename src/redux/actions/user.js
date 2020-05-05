@@ -3,7 +3,7 @@ import { API_URL } from '../../constants/API'
 import userTypes from '../types/user'
 import Cookie from "universal-cookie";
 
-const { ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT, ON_REGISTER_SUCCESS, ON_REGISTER_FAIL, COOKIE_CHECK, ON_SEARCHFILTER_SUCCESS } = userTypes
+const { ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT, ON_REGISTER_SUCCESS, ON_REGISTER_FAIL, COOKIE_CHECK, ON_UPDATE_QUANTITY_CART, ON_SEARCHFILTER_SUCCESS } = userTypes
 
 const cookieObj = new Cookie();
 
@@ -85,6 +85,8 @@ export const RegisterHandler = (userData) => {
     }
 }
 
+
+
 export const userKeepLogin = (userData) => {
     return dispatch => {
         Axios.get(`${API_URL}/users`, {
@@ -126,4 +128,14 @@ export const cookieChecker = () => {
         type: COOKIE_CHECK,
     }
 }
+
+export const qtyCartHandler = (val) => {
+    return{
+        type: ON_UPDATE_QUANTITY_CART,
+        payload: val,
+    }
+}
+
+
+
 

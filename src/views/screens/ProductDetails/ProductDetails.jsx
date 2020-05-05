@@ -8,6 +8,8 @@ import Axios from 'axios'
 import { API_URL } from '../../../constants/API'
 import swal from 'sweetalert';
 import "./ProductDetails.css"
+import {qtyCartHandler} from "../../../redux/actions";
+
 
 
 class ProductDetails extends React.Component {
@@ -47,6 +49,18 @@ class ProductDetails extends React.Component {
                         .then((res) => {
                             console.log(res);
                             swal("Add to carts", "Your item has been added to your cart", "success");
+                            Axios.get(`${API_URL}/carts`, {
+                                params: {
+                                  userId: this.props.user.id,
+                                  _expand: "product"
+                                }
+                              })
+                            .then((res) => {
+                                this.props.onQtyCartHandler(res.data.length)
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
                         })
                         .catch((err) => {
                             console.log(err);
@@ -135,4 +149,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ProductDetails);
+const mapDispatchToProps = {
+    onQtyCartHandler: qtyCartHandler,
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

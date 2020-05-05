@@ -50,7 +50,13 @@ class HistoryDetails extends React.Component {
                 <>
                     <tr>
                         <td>{val.id}</td>
-                        <td>{val.totalPrice}</td>
+                        <td><span style={{ fontWeight: "normal" }}>
+                                                    {" "}
+                                                    {new Intl.NumberFormat("id-ID", {
+                                                        style: "currency",
+                                                        currency: "IDR",
+                                                    }).format(val.totalPrice)}
+                                                </span></td>
                         <td>{val.status}</td>
                         <td>
                             <div className="d-flex flex-column align-items-center">
@@ -88,7 +94,13 @@ class HistoryDetails extends React.Component {
                                         <div className="d-flex flex-column ml-4 justify-content-center">
                                             <h6>No : <span style={{ fontWeight: "normal" }}> {index  + 1}</span> </h6>
                                             <h6>Product Id : <span style={{ fontWeight: "normal" }}>{val.productId}</span> </h6>
-                                            <h6>Price : <span style={{ fontWeight: "normal" }}> {val.price}</span> </h6>
+                                            <h6>Price : <span style={{ fontWeight: "normal" }}>
+                                                    {" "}
+                                                    {new Intl.NumberFormat("id-ID", {
+                                                        style: "currency",
+                                                        currency: "IDR",
+                                                    }).format(val.price)}
+                                                </span> </h6>
                                             <h6>Quantity : <span style={{ fontWeight: "normal" }}> {val.quantity}</span> </h6>
                                             <h6>
                                                 Total Price:
@@ -127,6 +139,7 @@ class HistoryDetails extends React.Component {
                             <th>Id Transaksi</th>
                             <th>Price</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

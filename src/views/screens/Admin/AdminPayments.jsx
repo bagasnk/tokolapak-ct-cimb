@@ -16,12 +16,14 @@ class AdminPayments extends React.Component {
     getPaymentsList = (val) => {
         Axios.get(`${API_URL}/transactions`, {
             params: {
+                _embed: "transcations_details",
                 status: val,
             }
         })
             .then((res) => {
+                console.log(res.data)
                 this.setState({ productList: res.data });
-                
+
             })
             .catch((err) => {
                 console.log(err);
@@ -68,40 +70,66 @@ class AdminPayments extends React.Component {
                     >
                         <td> {idx + 1} </td>
                         <td> {val.username} </td>
+                        <td>
+                            <span style={{ fontWeight: "normal" }}>
+                                {" "}
+                                {new Intl.NumberFormat("id-ID", {
+                                    style: "currency",
+                                    currency: "IDR",
+                                }).format(val.totalPrice)}
+                            </span>
+                        </td>
                         <td> {val.status}</td>
                         <td> {val.dateTransactions}</td>
                         <td> {val.dateTransactionsDone}</td>
+                        <div className="d-flex flex-column">
+                            <ButtonUI
+                                onClick={(_) => this.confirmBtnHandler(val.id)}
+                                type="contained"
+                            >
+                                Confirm
+                                        </ButtonUI>
+                        </div>
                     </tr>
-                    <tr
-                        className={`collapse-item ${
-                            this.state.activeProducts.includes(idx) ? "active" : null
-                            }`}
-                    >
-                        <td className="" colSpan={3}>
-                            <div className="d-flex justify-content-around align-items-center">
-                                    <div className="d-flex flex-column ml-4 justify-content-center">
-                                        <h6>
-                                            Total Price:
+                    <>
+                        {val.transcations_details.map((val,index) => {
+                        return (
+                        <tr
+                            className={`collapse-item ${
+                                this.state.activeProducts.includes(idx) ? "active" : null
+                                }`}
+                        >
+                            <td className="" colSpan={3}>
+                                    <div className="d-flex justify-content-around align-items-center">
+                                        <div className="d-flex flex-column ml-4 justify-content-center">
+                                            <h6>No : <span style={{ fontWeight: "normal" }}> {index  + 1}</span> </h6>
+                                            <h6>Product Id : <span style={{ fontWeight: "normal" }}>{val.productId}</span> </h6>
+                                            <h6>Price : <span style={{ fontWeight: "normal" }}>
+                                                    {" "}
+                                                    {new Intl.NumberFormat("id-ID", {
+                                                        style: "currency",
+                                                        currency: "IDR",
+                                                    }).format(val.price)}
+                                                </span> </h6>
+                                            <h6>Quantity : <span style={{ fontWeight: "normal" }}> {val.quantity}</span> </h6>
+                                            <h6>
+                                                Total Price:
                                             <span style={{ fontWeight: "normal" }}>
-                                                {" "}
-                                                {new Intl.NumberFormat("id-ID", {
-                                                    style: "currency",
-                                                    currency: "IDR",
-                                                }).format(val.totalPrice)}
-                                            </span>
-                                        </h6>
+                                                    {" "}
+                                                    {new Intl.NumberFormat("id-ID", {
+                                                        style: "currency",
+                                                        currency: "IDR",
+                                                    }).format(val.totalPrice)}
+                                                </span>
+                                            </h6>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="d-flex flex-column align-items-center">
-                                    <ButtonUI
-                                        onClick={(_) => this.confirmBtnHandler(val.id)}
-                                        type="contained"
-                                    >
-                                        Confirm
-                      </ButtonUI>
-                                </div>
-                        </td>
-                    </tr>
+                                </td>
+                        </tr>
+                         )
+                    }
+                    )}  
+                    </>
                 </>
             );
         });
@@ -115,32 +143,34 @@ class AdminPayments extends React.Component {
                         <h2>Products</h2>
                     </caption>
                     <div className="d-flex justify-content-center align-items-center">
-                    <ButtonUI
-                                        onClick={(_) => this.getPaymentsList("pending")}
-                                        type="contained"
-                                    >
-                                        Pending
+                        <ButtonUI
+                            onClick={(_) => this.getPaymentsList("pending")}
+                            type="contained"
+                        >
+                            Pending
                       </ButtonUI>
-                      <ButtonUI
-                                        onClick={(_) => this.getPaymentsList("Done")}
-                                        type="contained"
-                                    >
-                                        Done
+                        <ButtonUI
+                            onClick={(_) => this.getPaymentsList("Done")}
+                            type="contained"
+                        >
+                            Done
                       </ButtonUI>
-                      </div>
+                    </div>
                     <table className="dashboard-table">
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Id </th>
+                                <th>UserName</th>
+                                <th>Total Price</th>
                                 <th>Status</th>
                                 <th>Date Transaksi</th>
                                 <th>Date Transaksi Done</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>{this.renderProductList()}</tbody>
                     </table>
-                   
+
                 </div>
 
             </div>

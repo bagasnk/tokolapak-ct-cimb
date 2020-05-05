@@ -16,7 +16,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 import "./Navbar.css";
 import ButtonUI from "../Button/Button";
-import { logoutHandler, SearchAndFilterHandler } from "../../../redux/actions";
+import { logoutHandler, SearchAndFilterHandler, qtyCartHandler} from "../../../redux/actions";
 
 const CircleBg = ({ children }) => {
   return <div className="circle-bg">{children}</div>;
@@ -27,7 +27,8 @@ class Navbar extends React.Component {
     searchBarIsFocused: false,
     searchBarInput: "",
     dropdownOpen: false,
-    numbers: 0
+    cartData: [],
+
   };
 
   onFocus = () => {
@@ -40,7 +41,6 @@ class Navbar extends React.Component {
 
   logoutBtnHandler = () => {
     this.props.onLogout();
-    // this.forceUpdate();
   };
 
   toggleDropdown = () => {
@@ -52,6 +52,7 @@ class Navbar extends React.Component {
   }
   
   numbersShowHandler = () => {
+    let result = 0
     Axios.get(`${API_URL}/carts`, {
       params: {
         userId: this.props.user.id,
@@ -59,7 +60,11 @@ class Navbar extends React.Component {
       }
     })
       .then(res => {
-        this.setState({numbers : res.data.length})
+        this.setState({cartData : res.data})
+        this.state.cartData.map((val) => {
+          result = res.data.length
+        })
+          this.props.onQtyCartHandler(result)
       })
       .catch(err =>{
         console.log(err)
@@ -173,7 +178,7 @@ class Navbar extends React.Component {
                 />
                 <CircleBg>
                   <small style={{ color: "#3C64B1", fontWeight: "bold" }}>
-                    {this.state.numbers}
+                    {this.props.user.val}
                   </small>
                 </CircleBg>
               </Link>
@@ -225,6 +230,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   onLogout: logoutHandler,
   onSearchFilter: SearchAndFilterHandler,
+  onQtyCartHandler: qtyCartHandler,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
