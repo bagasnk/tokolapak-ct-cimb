@@ -165,6 +165,16 @@
       "dateTransactions": "5/5/2020",
       "jasaPengiriman": "100000",
       "id": 9
+    },
+    {
+      "username": "ilham",
+      "userId": 3,
+      "totalPrice": 30050000,
+      "status": "Done",
+      "dateTransactions": "5/5/2020",
+      "jasaPengiriman": "50000",
+      "id": 10,
+      "dateTransactionsDone": "5/5/2020"
     }
   ],
   "transcations_details": [
@@ -263,6 +273,14 @@
       "totalPrice": 46000000,
       "quantity": 2,
       "id": 12
+    },
+    {
+      "productId": 2,
+      "transactionId": 10,
+      "price": 15000000,
+      "totalPrice": 30000000,
+      "quantity": 2,
+      "id": 13
     }
   ],
   "wishlist": [],
